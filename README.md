@@ -1,0 +1,168 @@
+<index.html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💘</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ffd6e7;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px 20px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #e60073;
+      margin-bottom: 25px;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: transform 0.2s ease;
+    }
+
+    .yes {
+      background: #ff4da6;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+      color: #333;
+      position: relative;
+    }
+
+    /* popup */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 25px 20px;
+      border-radius: 20px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .popup-box h2 {
+      color: #e60073;
+      margin-bottom: 15px;
+    }
+
+    .popup-box p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      background: #ffe6f2;
+      padding: 10px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- первый экран -->
+  <div class="box">
+    <h1>Маншук, пойдёшь со мной<br>на свидание 15 февраля? 💘</h1>
+
+    <button class="yes" onclick="showPopup()">Да 💖</button>
+    <button class="no"
+      ontouchstart="moveButton(this)"
+      onmouseover="moveButton(this)">
+      Нет 💔
+    </button>
+  </div>
+
+  <!-- popup -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <h2>Спасибо, Жаным! 💖</h2>
+      <p>Я люблю тебя 🥹💞<br>Ты сделала мой день самым тёплым.</p>
+
+      <div class="info">
+        📅 15 февраля · ⏰ 21:30 · 📍 Izakaya (Шымкент)
+      </div>
+
+      <button class="yes" onclick="goToMap()">Открыть ресторан в 2GIS</button>
+      <button class="no" onclick="closePopup()">Закрыть</button>
+    </div>
+  </div>
+
+  <script>
+    const phrases = [
+      "нет нет не нажимай 😭",
+      "не приближайся 😨",
+      "не жми пожалуйста 😖",
+      "я заплачу 😭💔",
+      "стой! нельзя!"
+    ];
+
+    function showPopup() {
+      document.querySelector('.box').style.display = 'none';
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function goToMap() {
+      window.location.href = "https://go.2gis.com/YV7qL";
+    }
+
+    function moveButton(btn) {
+      const x = Math.random() * 400 - 200;
+      const y = Math.random() * 400 - 200;
+
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+
+      btn.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+    }
+  </script>
+
+</body>
+</html>
